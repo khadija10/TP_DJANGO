@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+
+{% block 'title'%}
+HomePage
+{%endblock%}
+{% block 'css'%}
+
+{%endblock%}
+{% block 'bodyTitle' %} {%endblock%}
+{% block 'content'%}
+<div class="container">
+  <h1 style="text-align: center;">liste profil Magasin</h1>
+  <div></div>
+  
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  
+  {% for profil in profils %}
+  <div class="col">
+  <div class="card">
+    <!-- <img src="../static/myApp/images/undraw_profile_pic_ic-5-t.svg" class="card-img-top" alt="Image" /> -->
+  <div class="card-body">
+    <h5 class="card-title">Email: {{ profil.email | upper}}</h5>
+    <p class="card-text">Phone: {{ profil.phone }}</p>
+    <p class="card-text">Date de creation: {{ profil.created_at }}</p>
+    <p class="card-text">Date de update: {{ profil.updated_at }}</p>
+    <p class="card-text">Magasin: {{ profil.magasin_id }}</p>
+  </div>
+  <div class="card-footer bg-transparent border-success container">
+
+      <div><a href="update_profil/{{profil.id}}" class="btn btn-warning d-grid gap-2 col-6 mx-auto">Update</a></div>
+  </div>
+</div>
+</div>
+{% endfor%}
+</div>
+</div>
+{%endblock%}
+
+{% block 'js'%}{%endblock%}

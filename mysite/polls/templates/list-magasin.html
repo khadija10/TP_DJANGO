@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+
+{% block 'title'%}
+HomePage
+{%endblock%}
+{% block 'css'%}
+
+{%endblock%}
+{% block 'bodyTitle' %} {%endblock%}
+{% block 'content'%}
+<div class="container">
+  <h1 style="text-align: center;">Liste Magasin</h1>
+  <div><a href="add_magasin" class="btn btn-success d-grid gap-2">Create</a></div>
+  <div></div>
+  
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for magasin in magasins %}
+  <div class="col">
+  <div class="card">
+    <!-- <img src="../static/myApp/images/undraw_profile_pic_ic-5-t.svg" class="card-img-top" alt="Image" /> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ magasin.name | upper}}</h5>
+    <p class="card-text">Date de creation: {{ magasin.created_at }}</p>
+    <p class="card-text">Date de update: {{ magasin.updated_at }}</p>
+    <p class="card-text">Country: {{ magasin.country }}</p>
+  </div>
+  <div class="card-footer bg-transparent border-success container">
+    <div class="d-flex justify-content-between">
+      <div><a href="{{ magasin.get_delete_url }}" class="btn btn-danger">Delete</a></div>
+       <div ><a href="add_profil/{{magasin.id}}" class="btn btn-warning">Add Profil</a></div>
+      <div ><a href="{{ magasin.get_update_url }}" class="btn btn-warning">Update</a></div>
+    </div>
+  </div>
+</div>
+</div>
+{% endfor%}
+</div>
+</div>
+{%endblock%}
+
+{% block 'js'%}{%endblock%}

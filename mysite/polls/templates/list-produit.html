@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+
+{% block 'title'%}
+HomePage
+{%endblock%}
+{% block 'css'%}
+
+{%endblock%}
+{% block 'bodyTitle' %} {%endblock%}
+{% block 'content'%}
+<div class="container">
+  <h1 style="text-align: center;">Liste Produit</h1>
+  <div><a href="add_produit" class="btn btn-success d-grid gap-2">Create</a></div>
+  <div></div>
+  
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for produit in produits %}
+  <div class="col">
+  <div class="card">
+    <!-- <img src="../static/myApp/images/undraw_profile_pic_ic-5-t.svg" class="card-img-top" alt="Image" /> -->
+  <div class="card-body">
+    <h5 class="card-title">{{ produit.name | upper}}</h5>
+    <p class="card-text">Date de creation: {{ produit.created_at }}</p>
+    <p class="card-text">Date de update: {{ produit.updated_at }}</p>
+    <p class="card-text">Country: {{ produit.country }}</p>
+  </div>
+  <div class="card-footer bg-transparent border-success container">
+      <div><a href="update_produit/{{produit.id}}" class="btn btn-warning d-grid gap-2 col-6 mx-auto">Update</a></div>
+  </div>
+</div>
+</div>
+{% endfor%}
+</div>
+</div>
+{%endblock%}
+
+{% block 'js'%}{%endblock%}
